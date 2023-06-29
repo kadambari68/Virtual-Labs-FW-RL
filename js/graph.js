@@ -3,6 +3,8 @@ function plotData() {
     values["AC1"]["volt"] != 0 &&
     values["AC1"]["freq"] != 0 &&
     values["R1"]["value"] != 0 &&
+    values["I1"]["value"] != 0 &&
+    values["IND1"]["value"] != 0 &&
 
     values["G1"]["fire"] != 0 &&
 
@@ -306,6 +308,7 @@ function generategraphfinal() {
   const sta2 = values["G3"]["freq"];
   const end2 = values["G3"]["fire"];
   const loadResistance = values["R1"]["value"];
+  const inductor = values["IND1"]["value"];
   var timep = 1 / freq;
   var timp = timep;
   var sine_wave,
@@ -387,9 +390,9 @@ function generategraphfinal() {
       flag = false;
     }
   }
-  var vavg=(sineamplitude/(Math.PI))*((1+Math.cos(sta1*(Math.PI/180))));
-  var iavg=vavg/loadResistance;
-  var vrms=(sineamplitude/(Math.sqrt(2*Math.PI)))*(Math.sqrt(Math.PI-(sta1*(Math.PI/180))+(Math.sin(2*(sta1*(Math.PI/180)))/2)));
+  var vavg=((2*sineamplitude)/(Math.PI))*((Math.cos(sta1*(Math.PI/180))));
+  var iavg=vavg/(loadResistance*inductor*1000);
+  var vrms=(sineamplitude/(Math.sqrt(2*Math.PI)));
   iavg =iavg*100;
   vavg=vavg*100;
   vrms=vrms*100;

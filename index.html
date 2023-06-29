@@ -76,19 +76,16 @@
                   </div>
                   <div class="ele-name">Resistor</div>
                 </div>
-                <div class="comp-ele">
+                <div class="comp-ele"><div class="center-img">
                   <div
-                    class="ele-img gatepulse-sym"
+                    class="ele-img inductor-sym"
                     style="height: 36px; width: 100px"
-                  >
-                    <img
-                      src="new-img/pulse.png"
-                      alt=""
-                      height="100%"
-                      width="100%"
-                    />
+
+                    >
+                    <img src="new-img/inductor.png" alt="" width="90%" />
                   </div>
-                  <div class="ele-name">Gatepulse</div>
+                  </div>
+                  <div class="ele-name">Inductor</div>
                 </div>
               </div>
               <div class="comp-row">
@@ -112,23 +109,20 @@
                 </div>
                 <div class="comp-ele">
                   <div
-                    class="ele-img volt-sym"
-                    style="
-                      height: 36px;
-                      width: 100px;
-                      display: flex;
-                      justify-content: center;
-                    "
+                    class="ele-img gatepulse-sym"
+                    style="height: 36px; width: 100px"
                   >
                     <img
-                      src="new-img/vmeter.png"
+                      src="new-img/pulse.png"
                       alt=""
                       height="100%"
-                      width="70%"
+                      width="100%"
                     />
                   </div>
-                  <div class="ele-name">Voltmeter</div>
+                  <div class="ele-name">Gatepulse</div>
                 </div>
+
+
               </div>
               <div class="comp-row">
                 <!-- <div class="comp-ele">
@@ -227,16 +221,24 @@
                   </div>
                   <div class="ele-name">Ammeter</div>
                 </div>
-                <div class="comp-ele"><div class="center-img">
+                <div class="comp-ele">
                   <div
-                    class="ele-img inductor-sym"
-                    style="height: 36px; width: 100px"
-
-                    >
-                    <img src="new-img/inductor.png" alt="" width="90%" />
+                    class="ele-img volt-sym"
+                    style="
+                      height: 36px;
+                      width: 100px;
+                      display: flex;
+                      justify-content: center;
+                    "
+                  >
+                    <img
+                      src="new-img/vmeter.png"
+                      alt=""
+                      height="100%"
+                      width="70%"
+                    />
                   </div>
-                  </div>
-                  <div class="ele-name">Inductor</div>
+                  <div class="ele-name">Voltmeter</div>
                 </div>
   
               </div>
@@ -690,6 +692,52 @@
 
               <div class="blank"></div>
               <div class="blank"></div>
+              <div class="hell" id="R1-back">
+                <div
+                  class="use resistor"
+                  style="
+                    background: url(new-img/resistoruse.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    position: relative;
+                    left: -12px;
+                    bottom: -30px;
+                  "
+                  id="R1"
+                >
+                  <div class="upper-end" id="R1T" style="top: -9px">
+                    <span class="red-circle"></span>
+                  </div>
+
+                  <div class="lower-end dbl" id="R1B">
+                    <span class="red-circle"></span>
+                  </div>
+                  <div
+                    class="top-serial-no"
+                    id="R1TS"
+                    style="top: -32px; left: 1px"
+                  >
+                    37
+                  </div>
+                  <div
+                    class="bottom-serial-no"
+                    id="R1BS"
+                    style="top: 8px; left: 1px"
+                  >
+                    38
+                  </div>
+                  <div class="name" id="R1-name" style="top: -40px; left: 41px">
+                    R
+                  </div>
+                  <div
+                    class="name"
+                    id="R1-value"
+                    style="width: 60px; left: 38px; top: -39px"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="blank"></div>
             </div>
 
             <!-- ROW 3 -->
@@ -751,50 +799,8 @@
               <div class="blank"></div>
               <div class="blank"></div>
               <div class="blank"></div>
+              <div class="blank"></div>
 
-              <div class="hell" id="R1-back">
-                <div
-                  class="use resistor"
-                  style="
-                    background: url(new-img/resistoruse.png);
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    position: relative;
-                    left: -10px;
-                  "
-                  id="R1"
-                >
-                  <div class="upper-end" id="R1T" style="top: -9px">
-                    <span class="red-circle"></span>
-                  </div>
-
-                  <div class="lower-end dbl" id="R1B">
-                    <span class="red-circle"></span>
-                  </div>
-                  <div
-                    class="top-serial-no"
-                    id="R1TS"
-                    style="top: -32px; left: 1px"
-                  >
-                    37
-                  </div>
-                  <div
-                    class="bottom-serial-no"
-                    id="R1BS"
-                    style="top: 8px; left: 1px"
-                  >
-                    38
-                  </div>
-                  <div class="name" id="R1-name" style="top: -40px; left: 41px">
-                    R
-                  </div>
-                  <div
-                    class="name"
-                    id="R1-value"
-                    style="width: 60px; left: 38px; top: -39px"
-                  ></div>
-                </div>
-              </div>
               <div class="hell" id="VM7-back">
                 <div
                   class="use voltagem other"
@@ -823,14 +829,14 @@
                     style="left: 2px; top: -30px"
                     id="VM7LS"
                   >
-                    39
+                    41
                   </div>
                   <div
                     class="right-serial-no-ac"
                     style="top: 6px; left: 3px"
                     id="VM7RS"
                   >
-                    40
+                    42
                   </div>
                   <div
                     class="left-name"
@@ -961,8 +967,9 @@
                   </div>
                   <div class="top-serial-no" id="I1TS">39</div>
                   <div class="bottom-serial-no" id="I1BS">40</div>
-                  <div class="name" id="I1-name" style="top: -39px; left: 45px;">L</div>
-                  <div class="name" id="I1-value" style="width: 60px"></div>
+                  <div class="name" id="IND1-name" style="top: -39px; left: 45px;">L</div>
+                  <div class="value" id="IND1-value" style="width: 60px; top: -34px;
+                  left: 41px;"></div>
                 </div>
               </div>
   
@@ -1553,7 +1560,7 @@
                   </li>
                   <br />
                   <li>
-                    <b>Resistor - 1, Ammeter – 1,</b>
+                    <b>Resistor - 1, Inductor - 1, Ammeter – 1,</b>
                   </li>
                   <br />
                   <li>
@@ -1576,7 +1583,7 @@
                   <br />
                   <li><b>(e)</b> (27-35, 34-36, 28-30, 29-31, 32-33)</li>
                   <br />
-                  <li><b>(f)</b> (25-31, 31-38, 37-39, 38-40)</li>
+                  <li><b>(f)</b> (25-31, 31-40, 38-39, 37-41, 40-42)</li>
                   <br />
 
                   <li>
@@ -1594,7 +1601,7 @@
 
                   <li>
                     <b>STEP 4:</b> Input the values for all the required
-                    components (AC Source, Gatepulse and Resistor) and the
+                    components (AC Source, Gatepulse, Resistor and Inductor) and the
                     waveform will get plot automatically.
                   </li>
                   <br />

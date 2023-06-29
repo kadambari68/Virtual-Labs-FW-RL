@@ -32,7 +32,7 @@ var correct_connections = [
   ["VM6R", "I1T"],
   ["VM4B", "GND1"],
   ["VM8R", "T2RB"],
-  ["VM7R", "R1B"],
+  ["VM7R", "IB"],
   ["VM7L", "R1T"],
   ["R1B", "IT"],
   ["IB", "T2RB"],
@@ -191,7 +191,7 @@ var values = {
 var endpoints = {};
 var user_connection = [];
 var wrong_connection = [];
-var correct_connections_flag = false;
+var correct_connections_flag = true;
 
 var instance = jsPlumb.getInstance({ ConnectionsDetachable: false });
 instance.bind("ready", () => {
@@ -892,7 +892,6 @@ instance.bind("ready", () => {
         .css({ top: event.pageY + "px", left: event.pageX + 10 + "px" });
     }
 
-    //context menu for capacitor
 
     $(".submit").bind("click", function (event) {
       $("div.custom-menu").remove();
@@ -1200,74 +1199,73 @@ instance.bind("ready", () => {
 
     // contextmenu for inductor
 
-    $("body").on("contextmenu", "#diagram .inductor", function (event) {
-      event.preventDefault();
+  $("body").on("contextmenu", "#diagram .inductor", function (event) {
+    event.preventDefault();
+    $("div.custom-menu").remove();
+    window.selectedControl = $(this).attr("id");
+
+    if (correct_connections_flag) {
+      $(
+        '<div class="custom-menu"><div class="name-element"><div class="name-element"><div style="display: flex; justify-content: end; position: relative;top: -4px;height: 28px; margin-bottom:2px; ;"><button class="submit fa fa-times cross-btn" id="submit-' +
+          window.selectedControl +
+          '"></button></div></div></div><form action="#" onsubmit="DcSubmited(' +
+          "'" +
+          window.selectedControl +
+          "'" +
+          ')"><div><label for="name-' +
+          window.selectedControl +
+          '">Name:</label><input type="text" maxlength="5" class="set-input-name" id="name-' +
+          window.selectedControl +
+          '" style="border-radius: 20px; padding:2px;width: 125px;"  placeholder=" Inductor ' +
+           
+          '" onchange="changeName(' +
+          "'" +
+          window.selectedControl +
+          "'" +
+          ',this.value)"/></div><div    class="value-element" style="display: flex; align-items: center; "><label for="value-' +
+          window.selectedControl +
+          '">Inductance:</label><input type="number" class="set-input" placeholder=" ' +
+          values[window.selectedControl]["value"] +
+          ' mH" min="1" max="10000"  id="value-' +
+          window.selectedControl +
+          '" /> </div><div style="display: flex; justify-content: end; padding-right: 13px"><button type="submit"  class="set-value-btn" style="border-radius: 20px">Set Value</button></div></form></div>'
+      )
+        .appendTo("body")
+        .css({ top: event.pageY + "px", left: event.pageX + 10 + "px" });
+    } else {
+      $(
+        '<div class="custom-menu"><div class="name-element"><div class="name-element"><div style="display: flex; justify-content: end; position: relative;top: -4px;height: 28px; margin-bottom:2px ;"><button class="submit fa fa-times cross-btn" id="submit-' +
+          window.selectedControl +
+          '"></button></div></div></div><form action="#" onsubmit="DcSubmited(' +
+          "'" +
+          window.selectedControl +
+          "'" +
+          ')"><div><label for="name-' +
+          window.selectedControl +
+          '">Name:</label><input type="text" maxlength="5" class="set-input-name" id="name-' +
+          window.selectedControl +
+          '" style="border-radius: 20px; padding:2px;width: 125px;"  placeholder=" Inductor ' +
+          values[window.selectedControl]["name"] +
+          '" onchange="changeName(' +
+          "'" +
+          window.selectedControl +
+          "'" +
+          ',this.value)"/></div><div    class="value-element" style="display: flex; align-items: center; "><label for="value-' +
+          window.selectedControl +
+          '">Inductance:</label><input type="number" class="set-input" placeholder="  ' +
+          values[window.selectedControl]["value"] +
+          ' mH" min="1" max="10000"  disabled id="value-' +
+          window.selectedControl +
+          '" /> </div><div style="display: flex; justify-content: end; padding-right: 13px"><button type="submit"  class="set-value-btn" style="border-radius: 20px">Set Name</button></div></form></div>'
+      )
+        .appendTo("body")
+        .css({ top: event.pageY + "px", left: event.pageX + 10 + "px" });
+    }
+    $(".submit").bind("click", function (event) {
       $("div.custom-menu").remove();
-      window.selectedControl = $(this).attr("id");
-      
-      if (correct_connections_flag) {
-        $(
-          '<div class="custom-menu"><div class="name-element"><div class="name-element"><div style="display: flex; justify-content: end; position: relative;top: -4px;margin-bottom:3px ;"><button class="submit fa fa-times cross-btn" id="submit-' +
-            window.selectedControl +
-            '"></button></div></div></div><form action="#" onsubmit="dcSubmited(' +
-            "'" +
-            window.selectedControl +
-            "'" +
-            ')"><div><label for="name-' +
-            window.selectedControl +
-            '">Name:</label><input type="text" class="set-input-name" id="name-' +
-            window.selectedControl +
-            '" style="border-radius: 20px; padding:2px;"  placeholder="  ' +
-            values[window.selectedControl]["name"] +
-            '" onchange="changeName(' +
-            "'" +
-            window.selectedControl +
-            "'" +
-            ',this.value)"/></div><div    class="value-element" style="display: flex; align-items: center; margin: 2px"><label for="value-' +
-            window.selectedControl +
-            '">Inductance:</label><input type="number" class="set-input" placeholder="  ' +
-            values[window.selectedControl]["value"] +
-            ' mH" min="1" max="20"  id="value-' +
-            window.selectedControl +
-            '" /> </div><div style="display: flex; justify-content: end; padding-right: 13px"><button type="submit"  class="set-value-btn" style="border-radius: 20px">Set Name</button></div></form></div>'
-        )
-          .appendTo("body")
-          .css({ top: event.pageY + "px", left: event.pageX + 10 + "px" });
-        
-      }else{
-        $(
-          '<div class="custom-menu"><div class="name-element"><div class="name-element"><div style="display: flex; justify-content: end; position: relative;top: -4px;margin-bottom:3px ;"><button class="submit fa fa-times cross-btn" id="submit-' +
-            window.selectedControl +
-            '"></button></div></div></div><form action="#" onsubmit="dcSubmited(' +
-            "'" +
-            window.selectedControl +
-            "'" +
-            ')"><div><label for="name-' +
-            window.selectedControl +
-            '">Name:</label><input type="text" class="set-input-name" id="name-' +
-            window.selectedControl +
-            '" style="border-radius: 20px; padding:2px;"  placeholder="  ' +
-            values[window.selectedControl]["name"] +
-            '" onchange="changeName(' +
-            "'" +
-            window.selectedControl +
-            "'" +
-            ',this.value)"/></div><div    class="value-element" style="display: flex; align-items: center; margin: 2px"><label for="value-' +
-            window.selectedControl +
-            '">Inductance:</label><input type="number" class="set-input" placeholder="  ' +
-            values[window.selectedControl]["value"] +
-            ' mH" min="1" max="20" disabled  id="value-' +
-            window.selectedControl +
-            '" /> </div><div style="display: flex; justify-content: end; padding-right: 13px"><button type="submit"  class="set-value-btn" style="border-radius: 20px">Set Name</button></div></form></div>'
-        )
-          .appendTo("body")
-          .css({ top: event.pageY + "px", left: event.pageX + 10 + "px" });
-      }
-      $(".submit").bind("click", function (event) {
-        $("div.custom-menu").remove();
-      });
     });
-  
+  });
+
   //dc source
   $("body").on("contextmenu", "#diagram .dcsource", function (event) {
     event.preventDefault();
@@ -1557,7 +1555,7 @@ $(document).ready(function () {
 });
 document.getElementById("check1").addEventListener("click", () => {
   if (wrong_connection.length == 0) {
-    if (user_connection.length < 29) {
+    if (user_connection.length < 31) {
       alert("Make all the connections");
     } else {
       alert("All connections connected");
@@ -1577,6 +1575,8 @@ function showreadings() {
       values["AC1"]["freq"] != 0 &&
       values["R1"]["value"] != 0 &&
       values["G1"]["fire"] != 0 &&
+      values["I1"]["value"] != 0 &&
+      values["IND1"]["value"] != 0 &&
       values["G2"]["fire"] != 0
     ) {
       if (new_reading) {
