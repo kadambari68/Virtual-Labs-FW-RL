@@ -2,7 +2,7 @@
 # A virtual lab prototype for Power electronics Full Wave Rectifier SCR created using 
 * JsPlumb Toolkit for drag-n-drop and flowchart connectors functionality.
 * Psim to run simulations for the required circuit components and identify their graphs.
-* Plotly.js for creating graphs.
+* Plotly.js for creating graphs based on input values.
 # Functionalities
 * Gives wrong connection message as soon as we make a wrong connection and the color of the connector turns to red.
 * On right-click a message box appears where we can set the name or value of that component.
